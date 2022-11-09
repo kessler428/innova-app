@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:innova/pages/home_page.dart';
-import 'package:innova/pages/login_page.dart';
+import 'package:innova/router/app_routes.dart';
+
+import 'package:innova/theme/app_theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,15 +10,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Peliculas',
-        initialRoute: 'login',
-        routes: {
-          'login': (BuildContext context) => LoginPage(),
-          'home': (BuildContext context) => HomePage(),
-        },
-        theme: ThemeData(
-          primaryColor: Colors.deepPurple,
-        ),
+        title: 'Innova',
+        initialRoute: AppRoutes.initialRoute,
+        routes: AppRoutes.getAppRoutes(),
+        onGenerateRoute: AppRoutes.lostRoutes,
+        theme: AppTheme.lightTheme,
       );
   }
 }
